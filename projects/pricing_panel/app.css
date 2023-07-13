@@ -1,0 +1,102 @@
+html {
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Raleway', sans-serif;
+    background-color: #9f86c0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.pricing-panel {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 15px 25px;
+    width: 100%;
+    max-width: 1160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.pricing-plan {
+    border-bottom: 3px solid #be95c4;
+}
+
+.pricing-plan:last-child {
+    border-bottom: none;
+}
+
+.pricing-image {
+    margin-bottom: 25px;
+    max-width: 100%;
+}
+
+.plan-name {
+    color: #532b88;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.plan-features {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    margin: 50px 0 25px;
+    color: #9c528b;
+}
+
+.plan-feature-item {
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 12px;
+    padding: 15px 0;
+    border-top: 1px solid #a682ff;
+    line-height: 1.5;
+}
+
+.plan-feature-item:last-child {
+    border-bottom: 1px solid #a682ff;
+}
+
+.plan-price {
+    color: #532b88;
+    font-size: 36px;
+    font-weight: 700;
+    display: block;
+}
+
+.signup-btn {
+    border: 1px solid #9c528b;
+    color: #9c528b;
+    display: inline-block;
+    padding: 15px 35px;
+    text-decoration: none;
+    margin: 25px;
+    border-radius: 10px;
+}
+
+.signup-btn:hover, .signup-btn:focus {
+    background-color: #ded9e2;
+}
+
+@media (min-width : 900px){
+    .pricing-panel{
+        flex-direction: row;
+    }
+
+    .pricing-plan{
+        border-bottom: none;
+        border-right: 1px solid #a682ff;
+        padding: 25px 50px;
+    }
+
+    .pricing-plan:last-child{
+        border-right: none;
+    }
+}

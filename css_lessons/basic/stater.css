@@ -1,0 +1,114 @@
+/* * {
+    background-color: lightcoral;
+} */
+
+body {
+    background-color: #edf6f9;
+}
+
+button {
+    background-color: #006d77;
+    color: #e5e5e5;
+    border-width: 0px;
+    border-radius: 5px;
+    padding: 5px 12px 5px 12px;
+}
+
+h1 {
+    font-family: sans-serif;
+    font-weight: bold;
+    text-shadow: balck;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    color: #003554;
+}
+
+h2::first-letter {
+    font-size: 40px;
+}
+
+#login,
+#signup {
+    background-color: #003566;
+    color: #f8f9fa;
+    margin-left: 10px;
+    position: relative;
+    left: 1150px;
+}
+
+.container {
+    width: 300px;
+    position: relative;
+    left: 1200px;
+}
+
+.funny {
+    font-size: medium;
+    background-color: #99d98c;
+    color: #f6fff8;
+    padding: 5px 12px 5px 12px;
+    border-radius: 10px;
+}
+
+.gunner {
+    font-size: medium;
+    background-color: #e63946;
+    color: #f6fff8;
+    padding: 5px 12px 5px 12px;
+    border-radius: 10px;
+}
+
+.dog {
+    font-size: medium;
+    background-color: #9a8c98;
+    color: #f6fff8;
+    padding: 5px 12px 5px 12px;
+    border-radius: 10px;
+}
+
+.post {
+    background-color: #e9ecef;
+}
+
+.post:nth-of-type(2n) {
+    background-color: #f8f9fa;
+}
+
+a {
+    text-decoration: inherit;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+section span a {
+    background-color: #168aad;
+    color: #eaf4f4;
+    padding: 3px 5px 3px 5px;
+    border-radius: 5px;
+}
+
+section>span {
+    color: #81b29a;
+}
+
+input[type="text"] {
+    background-color: transparent;
+    border-width: 0px 0px 2px 0px;
+}
+
+input[type="text"]:focus {
+    outline: none;
+}
+
+.footer {
+    background-color: black;
+    color: white;
+    margin: 0px;
+    padding: 20px 40px 40px 40px;
+    width: 100%;
+}

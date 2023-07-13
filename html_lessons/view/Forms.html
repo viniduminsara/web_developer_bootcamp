@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+</head>
+
+<body>
+    <h1>Demo Form</h1>
+
+    <form action="/my">
+        <p><b>Personal details</b></p>
+        <div>
+            <label for="username">Enter your username : </label>
+            <input type="text" placeholder="username" id="username" name="username" minlength="5" maxlength="20"
+                required>
+        </div>
+        <div>
+            <label for="password">Enter your username : </label>
+            <input type="password" placeholder="password" id="password" name="password" minlength="8" maxlength="20"
+                required>
+        </div>
+        <p><b>Select course</b></p>
+        <div>
+            <select name="course" id="course">
+                <option value="" selected>select course</option>
+                <option value="computer science">computer science</option>
+                <option value="information tecnology">informatio tecnology</option>
+                <option value="business studies">business studies</option>
+                <option value="biomedical science">biomedical science</option>
+            </select>
+        </div>
+        <p><b>Special details</b></p>
+        <div>
+            <textarea name="special" id="special" cols="30" rows="10" placeholder="type here"></textarea>
+        </div>
+        <p><b>Select role</b></p>
+        <div>
+            <div>
+                <input type="radio" name="role" id="student" value="student">
+                <label for="student">Student</label>
+            </div>
+            <div>
+                <input type="radio" name="role" id="teacher" value="teacher">
+                <label for="teacher">Teacher</label>
+            </div>
+        </div>
+        <p>
+            <input type="range" name="rate" id="rate" min="0" max="10" value="0">
+            <label for="rate">Rate the form</label>
+        </p>
+        <p>
+            <input type="checkbox" name="remember" id="remember" checked>
+            <label for="remember">Remember me</label>
+        </p>
+        <button>Create Account</button>
+    </form>
+
+    <hr>
+    <h1>Google Search</h1>
+    <form action="https://www.google.com/search">
+        <div>
+            <input type="text" name="q" placeholder="search in google">
+            <button>Search Google</button>
+        </div>
+    </form>
+
+    <hr>
+    <h1>Youtube Search</h1>
+    <form action="https://www.youtube.com/results">
+        <div>
+            <input type="text" name="search_query" placeholder="Searh on youtube">
+            <button>Search Youtube</button>
+        </div>
+    </form>
+</body>
+
+</html>

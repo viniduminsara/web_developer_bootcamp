@@ -1,0 +1,14 @@
+h1 {
+    color: red;
+    text-align: center;
+    text-decoration: red underline;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

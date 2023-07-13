@@ -1,0 +1,29 @@
+div {
+    width: 200px;
+}
+
+.one {
+    background-color: teal;
+    border-width: 5px;
+    border-color: black;
+    border-style: solid;
+    box-sizing: border-box;
+}
+
+.two {
+    background-color: coral;
+    border-width: 5px;
+    border-color: black;
+    border-style: dashed;
+    box-sizing: border-box;
+}
+
+.three {
+    background-color: magenta;
+    border-width: 5px;
+    border-color: black;
+    border-style: solid;
+    border-bottom-style: dashed;
+    border-bottom-width: 8px;
+    box-sizing: border-box;
+}
