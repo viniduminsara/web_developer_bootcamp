@@ -13,21 +13,30 @@
     <div class="container">
         <h1 class="dispaly-3 text-center text-info">Bootsstrap Forms</h1>
         <form action="#">
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="email">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="email">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="password">
+                </div>
             </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="password">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="gender">Gender</label>
+                    <select class="form-control" name="gender" id="gender">
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" id="city" placeholder="city">
+                </div>
             </div>
-            <div class="form-group">
-                <label for="gender">Gender</label>
-                <select class="form-control" name="gender" id="gender">
-                    <option value="M">Male</option>
-                    <option value="F">Female</option>
-                </select>
-            </div>
+            <button type="submit" class="btn btn-success">Register</button>
         </form>
     </div>
 
