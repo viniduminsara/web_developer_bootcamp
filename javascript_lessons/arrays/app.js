@@ -1,4 +1,4 @@
-const colors = ['Red','Blue','Green'];
+const colors = ['Red','Blue','Green','Black'];
 
 console.log(colors);
 
@@ -47,4 +47,20 @@ let index = colors.indexOf('Green');
 console.log(index);
 
 // reverse a array
+
+let reverse = colors.reverse();
+
+console.log(reverse);
+
+//copy of array
+
+let temp = colors.slice();
+
+console.log(temp);
+
+// copy the array from index
+
+console.log(colors.slice(1));
+
+console.log(colors.slice(0,2)); //not include the ending index
 
