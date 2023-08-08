@@ -36,6 +36,6 @@ repeat('Hello',3);
 
 function add(firstNum, secondNum){
     return firstNum + secondNum;
-}
+}   
 
 console.log(add(50, 7));
