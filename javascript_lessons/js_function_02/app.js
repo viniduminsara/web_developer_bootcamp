@@ -1,19 +1,19 @@
 // scope - functions
 
-// function hello(){
-//     let message = 'Hello World'; // <----
-// }
+function hello(){
+    let message = 'Hello World'; // <----
+}
 
-// console.log(message); //error - not defiend
+console.log(message); //error - not defiend
 
 // scope - code block
 
-// let one = 5;
-// if(one > 0){
-//     let msg = 'hi';
-// }
+let one = 5;
+if(one > 0){
+    let msg = 'hi';
+}
 
-// console.log(msg);
+console.log(msg);
 
 //lexical scops
 
@@ -49,7 +49,7 @@ function rollDice(){
     const roll = Math.floor(Math.random() * 6) + 1;
     console.log(roll);
 }
-
+  
 callTwice(rollDice);
 
 // return function
@@ -60,5 +60,11 @@ function makeBetweenFunc(min, max){
     }
 }
 
-makeBetweenFunc(100,200);
+const hundred = makeBetweenFunc(100,200);
+
+console.log(hundred(125));
+
+console.log(hundred(15));
+
+
 
