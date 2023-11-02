@@ -23,6 +23,8 @@ function colorChange(color, delay){
 colorChange('red', 2000)
     .then(() => colorChange('orange', 2000))
     .then(() => colorChange('yellow', 2000))
-    .then(() => {colorChange('green', 2000)})
+    .then(() => colorChange('green', 2000))
+
+
     
     
