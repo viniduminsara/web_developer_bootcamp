@@ -30,8 +30,18 @@ app.get('/r/:subtopic/:post', (req,res) => {
     res.send(`<h1>Viewing the ${post} of ${subtopic}`);
 });
 
+//string queries
+app.get('/search', (req,res) => {
+    const {q} = req.query;
+    if(!q){
+        res.send(`<h1>Please enter the query</h1>`);
+    }else{
+        res.send(`<h1>Search results for : ${q}</h1>`);
+    }
+});
+
 app.get('*',(req, res) => {
-    res.send('<h1>404 Not Found!!!</h1>');
+    res.send('<h1>404 Not Found!!!!</h1>');
 });
 
 //post request
