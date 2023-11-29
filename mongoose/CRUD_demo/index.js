@@ -23,10 +23,16 @@ app.get('/home', (req, res) => {
     res.render('home/index', { currentPage: 'Home' });
 });
 
-app.get('/products', async (req, res) => {
+app.get('/products', async(req, res) => {
     const products = await Product.find();
     res.render('products/index', {products, currentPage: 'Products'});
 });
+
+app.get('/products/:id', async(req, res) => {
+    const { id } = req.params;
+    const product = await Product.findById(id);
+    res.render('products/view', {product, currentPage: product.name});
+})
 
 
 
