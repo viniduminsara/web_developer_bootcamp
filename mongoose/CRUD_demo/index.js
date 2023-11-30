@@ -44,19 +44,19 @@ app.get('/products', async(req, res) => {
 });
 
 app.get('/products/new', (req, res) => {
-    res.render('products/new', { currentPage: 'NewProduct' });
+    res.render('products/new', { currentPage: 'New Product' });
 });
 
 app.get('/products/:id/edit', async(req, res) => {
     const { id } = req.params;
     const product = await Product.findById(id);
-    res.render('products/edit', {})
+    res.render('products/edit', { product, currentPage: 'Edit Product'});
 })
 
 app.get('/products/:id', async(req, res) => {
     const { id } = req.params;
     const product = await Product.findById(id);
-    res.render('products/view', {product, currentPage: product.name});
+    res.render('products/view', { product, currentPage: product.name});
 });
 
 app.post('/products', upload.single('image'), async(req, res) => {
