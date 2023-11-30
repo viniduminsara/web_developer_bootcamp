@@ -3,4 +3,21 @@
 
 <%- include('../partials/navbar') %>
 
+<div class="container">
+    <div class="row">
+        <div class="col mt-4 mb-4">
+            <h1>Product Details</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <% if (product.image && product.image.data) { %>
+                <img src="data:<%= product.image.contentType %>;base64,<%= product.image.data.toString('base64') %>" class="card-img-top" alt="<%= product.name %>" style="width: 260px; height: 200px;">
+            <% } else { %>
+                <img src="https://scotturb.com/wp-content/uploads/2016/11/product-placeholder.jpg" class="card-img-top" alt="Placeholder Image">
+            <% } %>
+        </div>
+    </div>
+</div>
+
 <%- include('../partials/footer') %>

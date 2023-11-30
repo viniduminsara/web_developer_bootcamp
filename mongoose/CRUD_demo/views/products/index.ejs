@@ -3,24 +3,32 @@
 <%- include('../partials/navbar') %>
 
 <div class="container">
+    <div class="row">
+        <div class="col mt-4 mb-4">
+            <h1>Products</h1>
+        </div>
+    </div>
     <% for (let i = 0; i < products.length; i++) { %>
         <% if (i % 4 === 0) { %>
             <div class="row">
         <% } %>
-
         <div class="col col-lg-3 col-md-3 col-sm-6 col-12">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h3 class="card-title" style="display: inline;"><%= products[i].name %></h3>
-                    <span class="badge text-bg-success"><%= products[i].catagory %></span>
-                    <h5 class="card-text">Rs. <%= products[i].price %></h5>
-                    <% if(products[i].qty !== 0){ %>
-                        <p class="card-text"><%= products[i].qty %>kg Available</p>
-                    <%}else{ %>
-                        <p class="card-text">Out of Stock</p> 
-                    <% } %> 
-                    <a href="/products/<%= products[i].id %>" class="card-link link-offset-2 link-underline link-underline-opacity-0">Details</a>
-                </div>
+            <div class="card mb-4" style="padding: 15px;">
+                <% if (products[i].image && products[i].image.data) { %>
+                    <img src="data:<%= products[i].image.contentType %>;base64,<%= products[i].image.data.toString('base64') %>" class="card-img-top" alt="<%= products[i].name %>" style="width: 260px; height: 200px;">
+                <% } else { %>
+                    <img src="https://scotturb.com/wp-content/uploads/2016/11/product-placeholder.jpg" class="card-img-top" alt="Placeholder Image">
+                <% } %>
+                <h3 class="card-title" style="display: inline;"><%= products[i].name %><span class="badge text-bg-success" style="font-size: 13px; margin-left: 10px;"><%= products[i].category %></span></h3>
+                <h5 class="card-text">Rs. <%= products[i].price %></h5>
+                <% if(products[i].qty !== 0 && products[i].category !== 'bakery'){ %>
+                    <p class="card-text"><%= products[i].qty %>kg Available</p>
+                <%}else if(products[i].qty !== 0 && products[i].category === 'bakery'){%>
+                    <p class="card-text"><%= products[i].qty %> qty Available</p> 
+                <% }else{ %>
+                    <p class="card-text" style="color: red;">Out of Stock</p> 
+                <% } %> 
+                <a href="/products/<%= products[i].id %>" class="btn btn-primary">Details</a>
             </div>
         </div>
 

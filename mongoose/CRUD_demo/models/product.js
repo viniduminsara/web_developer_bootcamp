@@ -16,10 +16,14 @@ const productSchema = new mongoose.Schema({
         required: true,
         min: 0
     },
-    catagory: {
+    category: {
         type: String,
-        lowercase: true,
+        required: true,
         enum: ['fruit','vegetable','bakery','grocery']
+    },
+    image: {
+        data: Buffer, // Binary image data
+        contentType: String // Mime type of the image (e.g., 'image/jpeg')
     }
 
 });
