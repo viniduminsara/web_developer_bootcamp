@@ -8,7 +8,7 @@
             <h1>Products</h1>
         </div>
         <div class="col d-flex justify-content-end align-items-center">
-            <a href="" class="btn btn-primary" style="background-color: #a852d0; border: none;">New Product</a>
+            <a href="/products/new" class="btn btn-primary" style="background-color: #a852d0; border: none;">New Product</a>
         </div>
     </div>
     <% for (let i = 0; i < products.length; i++) { %>
@@ -20,7 +20,7 @@
                 <% if (products[i].image && products[i].image.data) { %>
                     <img src="data:<%= products[i].image.contentType %>;base64,<%= products[i].image.data.toString('base64') %>" class="card-img-top" alt="<%= products[i].name %>" style="width: 260px; height: 200px;">
                 <% } else { %>
-                    <img src="https://scotturb.com/wp-content/uploads/2016/11/product-placeholder.jpg" class="card-img-top" alt="Placeholder Image">
+                    <img src="https://placehold.co/600x430?text=<%= products[i].name %>" class="card-img-top" alt="Placeholder Image">
                 <% } %>
                 <h3 class="card-title" style="display: inline;"><%= products[i].name %><span class="badge text-bg-success" style="font-size: 13px; margin-left: 10px;"><%= products[i].category %></span></h3>
                 <h5 class="card-text">Rs. <%= products[i].price %></h5>

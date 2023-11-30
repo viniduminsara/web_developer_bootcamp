@@ -14,7 +14,7 @@
             <% if (product.image && product.image.data) { %>
                 <img src="data:<%= product.image.contentType %>;base64,<%= product.image.data.toString('base64') %>" class="card-img-top" alt="<%= product.name %>">
             <% } else { %>
-                <img src="https://scotturb.com/wp-content/uploads/2016/11/product-placeholder.jpg" class="card-img-top" alt="Placeholder Image">
+                <img src="https://placehold.co/600x430?text=<%= product.name %>" class="card-img-top" alt="Placeholder Image">
             <% } %>
         </div>
         <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
