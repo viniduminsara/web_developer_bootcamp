@@ -18,7 +18,7 @@
         </div>
     </div>
     <div class="row">
-        <form action="/products/<%= product.id %>" method="post" enctype="multipart/form-data">
+        <form action="/products/<%= product.id %>?_method=PUT" method="post">
             <div class="input-group mb-3">
                 <span class="input-group-text">Name</span>
                 <input type="text" class="form-control" name="name" placeholder="Enter name of the product" value="<%= product.name %>" required>
@@ -40,10 +40,6 @@
                     <option <%= ( product.category === 'bakery' ? 'selected' : '')  %> value="bakery">Bakery</option>
                     <option <%= ( product.category === 'grocery' ? 'selected' : '')  %> value="grocery">Grocery</option>
                 </select>
-            </div>
-            <div class="input-group mb-3">
-                <span class="input-group-text">Image</span>
-                <input type="file" class="form-control" name="image" accept="image/*" placeholder="Select the image of product">
             </div>
             <button class="btn btn-primary">Save</button>
         </form>

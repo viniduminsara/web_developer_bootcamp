@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const multer = require('multer');
+const methodOverride = require('method-override');
 const fs = require('fs');
 const Product = require('./models/product');
 const port = 3000;
@@ -11,6 +12,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 
 mongoose.connect('mongodb://127.0.0.1:27017/CRUD_demo')
     .then(() => {
@@ -51,6 +53,17 @@ app.get('/products/:id/edit', async(req, res) => {
     const { id } = req.params;
     const product = await Product.findById(id);
     res.render('products/edit', { product, currentPage: 'Edit Product'});
+});
+
+app.put('/products/:id', async(req, res) => {
+    const { id } = req.params;
+    const { name, price, qty, category } = req.body;
+    const product = await Product.findByIdAndUpdate(
+        id,
+        { name: name, price: price, qty: qty, category: category },
+        { runValidators: true, new:true }
+    );
+    res.redirect(`/products/${product.id}`);
 })
 
 app.get('/products/:id', async(req, res) => {
