@@ -7,6 +7,7 @@ const methodOverride = require('method-override');
 const fs = require('fs');
 const Product = require('./models/product');
 const port = 3000;
+const categories = ['fruit','vegetable','bakery','grocery'];
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -46,13 +47,13 @@ app.get('/products', async(req, res) => {
 });
 
 app.get('/products/new', (req, res) => {
-    res.render('products/new', { currentPage: 'New Product' });
+    res.render('products/new', { categories, currentPage: 'New Product' });
 });
 
 app.get('/products/:id/edit', async(req, res) => {
     const { id } = req.params;
     const product = await Product.findById(id);
-    res.render('products/edit', { product, currentPage: 'Edit Product'});
+    res.render('products/edit', { product, categories, currentPage: 'Edit Product'});
 });
 
 app.put('/products/:id', async(req, res) => {
@@ -64,7 +65,13 @@ app.put('/products/:id', async(req, res) => {
         { runValidators: true, new:true }
     );
     res.redirect(`/products/${product.id}`);
-})
+});
+
+// app.delete('/products/:id', async(req, res) =>{
+//     const { id } = req.params;
+//     await Product.findByIdAndDelete(id);
+//     res.redirect('/products');
+// });
 
 app.get('/products/:id', async(req, res) => {
     const { id } = req.params;

@@ -34,11 +34,9 @@
             <div class="input-group mb-3">
                 <span class="input-group-text">Category</span>
                 <select class="form-select" name="category" aria-label="Default select example" required>
-                    <option>Select category of the product</option>
-                    <option <%= ( product.category === 'fruit' ? 'selected' : '')  %> value="fruit">Fruit</option>
-                    <option <%= ( product.category === 'vegetable' ? 'selected' : '')  %> value="vegetable">Vegetable</option>
-                    <option <%= ( product.category === 'bakery' ? 'selected' : '')  %> value="bakery">Bakery</option>
-                    <option <%= ( product.category === 'grocery' ? 'selected' : '')  %> value="grocery">Grocery</option>
+                    <% for(let category of categories) { %>
+                        <option value="<%= category %>" <%= (category === product.category) ? 'selected' : '' %>><%= category %></option>
+                    <% } %>
                 </select>
             </div>
             <button class="btn btn-primary">Save</button>
