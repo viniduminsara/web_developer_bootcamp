@@ -4,10 +4,21 @@
 
 <div class="container">
     <div class="row">
-        <div class="col mt-4 mb-4">
-            <h1>Products</h1>
+        <div class="col col-lg-6 col-md-6 col-sm-12 col-12 mt-4 mb-4">
+            <h1><%= selectedFilter.toUpperCase() %></h1>
         </div>
-        <div class="col d-flex justify-content-end align-items-center">
+        <div class="col d-flex justify-content-end align-items-center col-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="dropdown m-2">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <%= selectedFilter %>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/products">All Products</a></li>
+                    <% for(let category of categories){ %>
+                        <li><a class="dropdown-item" href="/products?filter=<%= category %>"><%= category %></a></li>
+                    <% } %>
+                </ul>
+            </div>
             <a href="/products/new" class="btn btn-primary" style="background-color: #a852d0; border: none;">New Product</a>
         </div>
     </div>

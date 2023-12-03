@@ -41,13 +41,15 @@ app.get('/', (req, res) => {
     res.redirect('/products');
 });
 
-app.get('/home', (req, res) => {
-    res.render('home/index', { currentPage: 'Home' });
-});
-
 app.get('/products', async(req, res) => {
-    const products = await Product.find();
-    res.render('products/index', {products, currentPage: 'Products'});
+    const selectedFilter = req.query.filter || 'All Products';
+    let products;
+    if(selectedFilter === 'All Products'){
+        products = await Product.find();
+    }else{
+        products = await Product.find({category: selectedFilter});
+    }
+    res.render('products/index', {products, selectedFilter, categories, currentPage: 'Products'});
 });
 
 app.get('/products/new', (req, res) => {
@@ -56,8 +58,12 @@ app.get('/products/new', (req, res) => {
 
 app.get('/products/:id/edit', async(req, res) => {
     const { id } = req.params;
-    const product = await Product.findById(id);
-    res.render('products/edit', { product, categories, currentPage: 'Edit Product'});
+    if(mongoose.Types.ObjectId.isValid(id)){
+        const product = await Product.findById(id);
+        res.render('products/edit', { product, categories, currentPage: 'Edit Product'});
+    }else{
+        res.render('products/notfound', {currentPage: '404 Not Found'});
+    }
 });
 
 app.put('/products/:id', async(req, res) => {
@@ -79,8 +85,12 @@ app.delete('/products/:id', async(req, res) =>{
 
 app.get('/products/:id', async(req, res) => {
     const { id } = req.params;
-    const product = await Product.findById(id);
-    res.render('products/view', { product, currentPage: product.name});
+    if(mongoose.Types.ObjectId.isValid(id)){
+        const product = await Product.findById(id);
+        res.render('products/view', { product, currentPage: product.name});
+    }else{
+        res.render('products/notfound', {currentPage: '404 Not Found'});
+    }
 });
 
 app.post('/products', upload.single('image'), async(req, res) => {
@@ -108,6 +118,10 @@ app.post('/products', upload.single('image'), async(req, res) => {
     await newProduct.save();
     res.redirect(`/products/${newProduct.id}`);
 });
+
+app.get('*', (req, res) => {
+    res.render('products/notfound', {currentPage: '404 Not Found'});
+})
 
 
 
