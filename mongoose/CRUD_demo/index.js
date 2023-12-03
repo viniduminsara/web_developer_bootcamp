@@ -37,6 +37,10 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+app.get('/', (req, res) => {
+    res.redirect('/products');
+});
+
 app.get('/home', (req, res) => {
     res.render('home/index', { currentPage: 'Home' });
 });
@@ -67,11 +71,11 @@ app.put('/products/:id', async(req, res) => {
     res.redirect(`/products/${product.id}`);
 });
 
-// app.delete('/products/:id', async(req, res) =>{
-//     const { id } = req.params;
-//     await Product.findByIdAndDelete(id);
-//     res.redirect('/products');
-// });
+app.delete('/products/:id', async(req, res) =>{
+    const { id } = req.params;
+    await Product.findByIdAndDelete(id);
+    res.redirect('/products');
+});
 
 app.get('/products/:id', async(req, res) => {
     const { id } = req.params;
