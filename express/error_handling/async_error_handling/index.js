@@ -35,80 +35,59 @@ app.get('/', (req, res) => {
     res.redirect('/products');
 });
 
-app.get('/products', async(req, res, next) => {
-    try {
-        const selectedFilter = req.query.filter || 'All Products';
-        let products;
-        if(selectedFilter === 'All Products'){
-            products = await Product.find();
-        }else{
-            products = await Product.find({category: selectedFilter});
-        }
-        res.render('products/index', {products, selectedFilter, categories, currentPage: 'Products'});
-    } catch (error) {
-        next(error);
+app.get('/products', wrapAsync(async(req, res, next) => {
+    const selectedFilter = req.query.filter || 'All Products';
+    let products;
+    if(selectedFilter === 'All Products'){
+        products = await Product.find();
+    }else{
+        products = await Product.find({category: selectedFilter});
     }
-});
+    res.render('products/index', {products, selectedFilter, categories, currentPage: 'Products'});
+}));
 
 app.get('/products/new', (req, res) => {
     res.render('products/new', { categories, currentPage: 'New Product' });
 });
 
-app.get('/products/:id/edit', async(req, res) => {
-    try {
-        const { id } = req.params;
-        if(mongoose.Types.ObjectId.isValid(id)){
-            const product = await Product.findById(id);
-            if(!product){
-                throw new AppError('Product not found', 404);
-            }
-            res.render('products/edit', { product, categories, currentPage: 'Edit Product'});
-        }
-    } catch (error) {
-        
+app.get('/products/:id/edit', wrapAsync(async(req, res, next) => {
+    const { id } = req.params;
+    const product = await Product.findById(id);
+    if(!product){
+        return next(new AppError('Product not Found', 404));
     }
-});
+    res.render('products/edit', { product, categories, currentPage: 'Edit Product'});
+}));
 
-app.put('/products/:id', async(req, res, next) => {
-    try {
-        const { id } = req.params;
-        const product = await Product.findByIdAndUpdate(id, req.body, { runValidators: true, new:true });
-        if(!product){
-            throw new AppError('Product not found', 404);
-        }
-        res.redirect(`/products/${product.id}`);
-    } catch (error) {
-        next(error);
+app.put('/products/:id', wrapAsync(async(req, res, next) => {
+    const { id } = req.params;
+    const product = await Product.findByIdAndUpdate(id, req.body, { runValidators: true, new:true });
+    if(!product){
+        return next(new AppError('Product not Found', 404));
     }
-    
-});
+    res.redirect(`/products/${product.id}`);
+}));
 
-app.delete('/products/:id', async(req, res) =>{
+app.delete('/products/:id', wrapAsync(async(req, res, next) =>{
     const { id } = req.params;
     await Product.findByIdAndDelete(id);
     res.redirect('/products');
-});
+}));
 
-app.get('/products/:id', async(req, res, next) => {
+app.get('/products/:id', wrapAsync(async(req, res, next) => {
     const { id } = req.params;
-    if(mongoose.Types.ObjectId.isValid(id)){
-        const product = await Product.findById(id);
-        if(!product){
-            return next(new AppError('Product not Found', 404));
-        }
-        res.render('products/view', { product, currentPage: product.name});
+    const product = await Product.findById(id);
+    if(!product){
+        return next(new AppError('Product not Found', 404));
     }
-});
+    res.render('products/view', { product, currentPage: product.name});
+}));
 
-app.post('/products', async(req, res, next) => {
-    try {
-        const newProduct = new Product(req.body);
-        await newProduct.save();
-        res.redirect(`/products/${newProduct.id}`);
-    } catch (error) {
-        next(error);
-    }
-});
+app.post('/products', wrapAsync(async(req, res, next) => {
+    const newProduct = new Product(req.body);
+    await newProduct.save();
+    res.redirect(`/products/${newProduct.id}`);
+}));
 
 //custom error handler
 app.use((err, req, res, next) => {
