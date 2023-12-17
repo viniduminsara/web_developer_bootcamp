@@ -46,7 +46,7 @@ saveProducts()
     })
     .then(() => {
         // Farms have been saved, now retrieve and log them
-        return Farm.find();
+        return Farm.find().populate('products'); // <- populate data of products of each farm
     })
     .then((farms) => {
         console.log(farms);
