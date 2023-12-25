@@ -1,5 +1,5 @@
 {
-  "name": "bcrypt",
+  "name": "auth_demo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,6 +10,9 @@
   "author": "Vinidu Minsara",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.1.1"
+    "bcrypt": "^5.1.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "mongoose": "^8.0.3"
   }
 }

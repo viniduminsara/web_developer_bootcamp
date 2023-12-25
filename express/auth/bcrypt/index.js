@@ -15,4 +15,3 @@ const login = async(password, hashpw) => {
 hashpassword('12345');
 
 login('12345', '$2b$10$gVmv9MnaiXI6MsoPnm6ytuuNa80GAEQjR2PqVLWz9BhaPpBxEkcUO');
-git status
