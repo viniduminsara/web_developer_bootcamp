@@ -1,4 +1,5 @@
 import ShoppingListItem from "./ShoppingListItem";
+import PropTypes from "prop-types";
 
 function ShoppingList({ items }) {
     return (
